@@ -1,5 +1,6 @@
 import axios from "axios";
-const checkHinet = () => {
+
+const sendMessage = (msg) => {
     axios({
         method: 'post',
         url: 'https://notify-api.line.me/api/notify',
@@ -7,9 +8,20 @@ const checkHinet = () => {
             'Content-Type': 'application/x-www-form-urlencoded',
             'authorization': process.env.LINE_NOTIFY_TOKEN,
         },
-        data: "message=Github Action Test"
+        data: `message=${msg}`
     }).catch((error) => {
         console.log(error);
     });
 };
+
+const checkHinet = () => {
+    axios({
+        method: 'get',
+        url: 'http://114.34.102.252/',
+    }).catch((error) => {
+        console.log(error);
+        sendMessage("中華電信固定IP已中斷！");
+    });
+};
+
 checkHinet();
