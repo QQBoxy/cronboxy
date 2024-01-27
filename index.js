@@ -1,0 +1,1 @@
+console.log("Hello CronBoxy", process.env.TEST_TOKEN);

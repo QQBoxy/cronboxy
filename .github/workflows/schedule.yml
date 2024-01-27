@@ -1,0 +1,21 @@
+name: CronBoxy
+
+on:
+  push:
+  schedule:
+    - cron: "0 * * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '18.x'
+      - run: npm install
+      - name: Run script
+        run: npm start
+        env:
+          TEST_TOKEN: ${{ secrets.TEST_TOKEN }}
+          LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
