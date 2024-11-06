@@ -17,7 +17,7 @@ const sendMessage = (msg) => {
 const checkHinet = () => {
     axios({
         method: 'get',
-        url: 'http://114.34.102.252/',
+        url: 'http://114.32.153.24/',
     }).catch((error) => {
         console.log(error);
         sendMessage("中華電信固定IP已中斷！");
